@@ -5,6 +5,7 @@ import "./Pagination.css";
 import Pagination from 'react-js-pagination';
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import { FaHeart } from "react-icons/fa";
+import { BsChatLeftDots } from "react-icons/bs";
 
 const HomePage = () => {
     const location = useLocation();
@@ -67,10 +68,16 @@ const HomePage = () => {
                                     <div className='price'>{shop.fmtprice}원</div>
                                 </Card.Body>
                             </Link>
-                            <Card.Footer>
+                            <Card.Footer className='text-end'>
                                 <span className='heart'>
                                     <FaHeart />
-                                    <small style={{ fontSize: "1rem" }}>좋아요: {shop.fcnt}</small>
+                                    <small className='ms-1'
+                                        style={{ fontSize: "1rem" }}>좋아요: {shop.fcnt}</small>
+                                </span>
+                                <span className='ms-2'>
+                                    <BsChatLeftDots />
+                                    <span className='ms-1'
+                                        style={{fontSize:'0.7rem'}}>{shop.reviewcnt}</span>
                                 </span>
                             </Card.Footer>
                         </Card>

@@ -32,14 +32,29 @@ a {
 	margin: 0px 3px;
 }
 
-.navbar-nav .active {
-	color: white;
+.line {
+	border: 1px dotted gray;
+}
+
+.body {
+	cursor: pointer;
 }
 
 .price {
-	font-size: 0.8res;
+	font-size: 0.8rem;
+}
+
+.image {
+	border: 1px solid gray;
+	border-radius: 20px;
 }
 
 .heart {
 	color: red;
+	cursor: pointer;
+}
+
+.cart_input_group {
+	max-width: 120px;
+	margin: 0 auto;
 }
