@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useRef, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Row, Col, InputGroup, Button, Form, Tabs, Tab } from 'react-bootstrap';
+import ContentPage from './ContentPage';
 
 const ShopUpdate = () => {
     const { pid } = useParams();
@@ -13,11 +14,12 @@ const ShopUpdate = () => {
 
     const getShop = async () => {
         const res = await axios(`/shop/read/${pid}`);
+        const data = {...res.data, html:content};
         //console.log(res.data);
-        setForm(res.data);
+        setForm(data);
     }
 
-    const { title, lprice, image, fmtdate, maker } = form;
+    const { title, lprice, image, fmtdate, maker, content } = form;
 
     useEffect(() => {
         getShop();
@@ -66,7 +68,7 @@ const ShopUpdate = () => {
     return (
         <div className='my-5'>
             <h1 className='text-center mb-5'>상품정보수정</h1>
-            <Tabs defaultActiveKey="home"
+            <Tabs defaultActiveKey="content"
                 id="fill-tab-example" className="mb-3" fill>
                 <Tab eventKey="home" title="상품정보">
                     <Row className='justify-content-center'>
@@ -122,6 +124,9 @@ const ShopUpdate = () => {
                                 className='px-5'>이미지저장</Button>
                         </div>
                     </Row>
+                </Tab>
+                <Tab eventKey="content" title="상세설명">
+                    <ContentPage pid={pid} form={form} setForm={setForm} getShop={getShop}/>
                 </Tab>
             </Tabs>
         </div>

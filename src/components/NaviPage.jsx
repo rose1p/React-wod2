@@ -15,6 +15,7 @@ import MyPage from './user/MyPage';
 import OrderComplete from './order/OrderComplete';
 import OrderList from './order/OrderList';
 import AdminOrderList from './admin/OrderList';
+import ChartExample from './chart/ChartExample';
 
 const NaviPage = () => {
     const location = useLocation();
@@ -54,6 +55,9 @@ const NaviPage = () => {
                                     </Nav.Link>
                                     <Nav.Link href="/admin/purchase" className={path.indexOf('/admin/') !== -1 && 'active'}>
                                         주문관리
+                                    </Nav.Link>
+                                    <Nav.Link href="/admin/chart" className={path.indexOf('/chart/') !== -1 && 'active'}>
+                                        그래프
                                     </Nav.Link>
                                 </>
                             }
@@ -102,6 +106,7 @@ const NaviPage = () => {
                 <Route path="/order/complete/:oid" element={<OrderComplete />} />
                 <Route path="/order/list" element={<OrderList />} />
                 <Route path="/admin/purchase" element={<AdminOrderList />} />
+                <Route path="/admin/chart" element={<ChartExample />} />
             </Routes>
         </>
     )

@@ -9,7 +9,7 @@ import ReviewPage from './ReviewPage';
 const ShopInfo = () => {
     const { pid } = useParams();
     const [shop, setShop] = useState('');
-    const { title, maler, image, fmtdate, fmtprice, ucnt, fcnt } = shop;
+    const { title, maler, image, fmtdate, fmtprice, ucnt, fcnt, content } = shop;
 
     const getShop = async () => {
         const res = await axios(`/shop/info/${pid}?uid=${sessionStorage.getItem("uid")}`);
@@ -80,7 +80,7 @@ const ShopInfo = () => {
                 id="noanim-tab-example"
                 className="mb-5">
                 <Tab eventKey="home" title="상세설명">
-                    상세설명
+                <div className='py-5' dangerouslySetInnerHTML={{ __html:content }}></div>
                 </Tab>
                 <Tab eventKey="profile" title="상품리뷰">
                     <ReviewPage pid={pid}/>
